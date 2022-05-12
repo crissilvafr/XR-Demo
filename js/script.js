@@ -94,7 +94,9 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.outputEncoding = THREE.sRGBEncoding;
     container.appendChild(renderer.domElement);
-    document.body.appendChild( ARButton.createButton( renderer ) );
+    let arButton =  ARButton.createButton( renderer );
+    arButton.style.bottom = "100px";
+    document.body.appendChild( arButton );
     window.addEventListener('resize', onWindowResize);
 
     // stats
