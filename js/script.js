@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 import { GLTFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
-import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
+//import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
 
 let container, stats, clock, gui, mixer, controls;
 let camera, scene, renderer, model, face, skeleton;
@@ -22,11 +22,11 @@ function init() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 100);
     camera.position.set(- 5, 3, 10);
     //camera.lookAt( new THREE.Vector3( 0, 2, 0 ) );
-    //controls = new OrbitControls(camera, container);
-    //controls.target.set(0, 2, 0);
-    //controls.enableDamping = true;
-    //controls.listenToKeyEvents(window); // optional
-    //controls.update();
+    controls = new OrbitControls(camera, container);
+    controls.target.set(0, 2, 0);
+    controls.enableDamping = true;
+    controls.listenToKeyEvents(window); // optional
+    controls.update();
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xe0e0e0);
     scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
@@ -94,8 +94,8 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.outputEncoding = THREE.sRGBEncoding;
     container.appendChild(renderer.domElement);
-    let arButton =  ARButton.createButton( renderer );
-    arButton.style.bottom = "100px";
+    //let arButton =  ARButton.createButton( renderer );
+    //arButton.style.bottom = "100px";
     document.body.appendChild( arButton );
     window.addEventListener('resize', onWindowResize);
 
@@ -133,7 +133,7 @@ function animate() {
         let mixerUpdateDelta = clock.getDelta();
         mixer.update(mixerUpdateDelta);
     } catch { }
-    //controls.update();
+    controls.update();
     renderer.render(scene, camera);
 }
 
