@@ -96,7 +96,7 @@ function init() {
     container.appendChild(renderer.domElement);
     //let arButton =  ARButton.createButton( renderer );
     //arButton.style.bottom = "100px";
-    document.body.appendChild( arButton );
+    //document.body.appendChild( arButton );
     window.addEventListener('resize', onWindowResize);
 
     // stats
